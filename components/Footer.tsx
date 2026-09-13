@@ -52,9 +52,9 @@ export default function Footer() {
               {[
                 { href: "/about", label: "About Us" },
                 { href: "/membership", label: "Maintenance Club" },
-                { href: "/gallery", label: "Gallery" },
                 { href: "/services", label: "Pricing" },
                 { href: "/contact", label: "Book a Detail" },
+                { href: "/contact", label: "Contact" },
               ].map((l, i) => (
                 <li key={i}>
                   <Link

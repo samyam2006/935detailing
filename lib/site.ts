@@ -268,58 +268,6 @@ export const stats = [
   { value: "AV", label: "Antelope Valley Local" },
 ];
 
-/* ---------------- Gallery showcase (themed artwork) ---------------- */
-export const galleryItems: {
-  title: string;
-  service: string;
-  paint: string;
-  paint2: string;
-  accent: string;
-}[] = [
-  {
-    title: "Midnight Coupe",
-    service: "Ceramic Coating",
-    paint: "#0a0a0c",
-    paint2: "#26262c",
-    accent: "#d21f35",
-  },
-  {
-    title: "Crimson GT",
-    service: "Paint Correction",
-    paint: "#7c0f1c",
-    paint2: "#d21f35",
-    accent: "#ffffff",
-  },
-  {
-    title: "Silver Executive",
-    service: "935 Signature",
-    paint: "#8b9096",
-    paint2: "#dfe3e6",
-    accent: "#d21f35",
-  },
-  {
-    title: "Graphite SUV",
-    service: "935 Full Restore",
-    paint: "#1a1c22",
-    paint2: "#3a3d47",
-    accent: "#d21f35",
-  },
-  {
-    title: "Pearl Daily",
-    service: "935 Refresh",
-    paint: "#e9ebee",
-    paint2: "#c3c8cd",
-    accent: "#d21f35",
-  },
-  {
-    title: "Blackout Track",
-    service: "Paint Enhancement",
-    paint: "#0c0c10",
-    paint2: "#1c1c22",
-    accent: "#ff2740",
-  },
-];
-
 /* ---------------- Process ---------------- */
 export type Step = {
   n: string;

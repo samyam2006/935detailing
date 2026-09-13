@@ -4,7 +4,6 @@ import { ArrowRight, Check, Truck, SprayCan, BadgeCheck, Sun } from "lucide-reac
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
-import CarArt from "@/components/CarArt";
 import Socials from "@/components/Socials";
 import { site } from "@/lib/site";
 
@@ -103,25 +102,30 @@ export default function AboutPage() {
           <Reveal delay={0.1}>
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-carbon p-8">
               <div className="absolute inset-0 bg-radial-crimson opacity-70" />
-              <div className="animate-float-slow relative">
-                <CarArt
-                  paint="#7c0f1c"
-                  paint2="#d21f35"
-                  accent="#ffffff"
-                  className="w-full"
-                />
+              <div className="relative">
+                <div className="flex items-center gap-3">
+                  <span className="accent-line" />
+                  <p className="eyebrow">The 935 promise</p>
+                </div>
+                <p className="font-display mt-4 text-3xl text-bone">
+                  Every vehicle,{" "}
+                  <span className="text-crimson-metal">the same standard.</span>
+                </p>
+                <ul className="mt-7 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                  {promises.map((p) => (
+                    <li
+                      key={p}
+                      className="flex items-center gap-2.5 rounded-lg bg-ink/50 px-3 py-2.5 text-sm text-silver"
+                    >
+                      <Check size={15} className="shrink-0 text-crimson" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-xs font-bold uppercase tracking-[0.28em] text-crimson">
+                  Mobile · Premium · 935
+                </p>
               </div>
-              <ul className="relative mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                {promises.map((p) => (
-                  <li
-                    key={p}
-                    className="flex items-center gap-2.5 rounded-lg bg-ink/50 px-3 py-2 text-sm text-silver"
-                  >
-                    <Check size={15} className="shrink-0 text-crimson" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
             </div>
           </Reveal>
         </div>

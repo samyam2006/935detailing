@@ -8,19 +8,15 @@ crimson and brushed metallic silver.
 
 ## ✨ Features
 
-- **Multi-page site** — Home, Services & Pricing, Membership, Gallery, About,
-  and a Book/Contact page with a working backend.
+- **Multi-page site** — Home, Services & Pricing, Membership, About, and a
+  Book/Contact page with a working backend.
 - **Real business content** — the three main packages (935 Refresh, Signature,
   Full Restore) with car/SUV pricing, premium paint services, an add-on menu,
   the 935 Maintenance Club, and customer perks.
 - **Full-stack** — a validated `POST /api/contact` booking endpoint (honeypot
   spam protection + in-memory rate limiting) powering the booking form.
-- **Custom artwork, no stock photos** — every vehicle is a hand-built,
-  fully-themeable SVG sports-coupe, so the visuals are 100% original and load
-  instantly.
-- **Motion throughout** — scroll reveals, an animated navbar, hover states, a
-  parallax hero and an interactive drag-to-compare before/after slider
-  (Framer Motion).
+- **Motion throughout** — scroll reveals, an animated navbar, hover states and
+  a centered animated hero (Framer Motion).
 - **Brand-matched design system** — metallic/crimson gradient text, carbon-fiber
   and grid textures, glass panels and a crimson glow language.
 - **Responsive & accessible** — mobile menu, `prefers-reduced-motion` support,
@@ -60,12 +56,11 @@ app/
   page.tsx            # Home
   services/page.tsx   # Packages, premium services, add-ons + FAQ
   membership/page.tsx # 935 Maintenance Club + perks
-  gallery/page.tsx    # Filterable showcase + before/after
   about/page.tsx      # Story + values
   contact/page.tsx    # Booking form + contact details
   api/contact/route.ts# Backend booking endpoint
   globals.css         # Brand design system
-components/           # Navbar, Footer, Hero, CarArt (SVG), BookingForm, …
+components/           # Navbar, Footer, Hero, BookingForm, ServiceCard, …
 lib/site.ts           # Central content: services, socials, testimonials, …
 ```
 

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Home, ArrowLeft } from "lucide-react";
-import CarArt from "@/components/CarArt";
 
 export default function NotFound() {
   return (
@@ -11,10 +10,7 @@ export default function NotFound() {
         <p className="font-display text-[7rem] leading-none text-crimson-metal sm:text-[10rem]">
           404
         </p>
-        <div className="mx-auto -mt-6 max-w-md">
-          <CarArt paint="#0b0b0f" paint2="#33333c" accent="#ff2740" className="w-full opacity-90" />
-        </div>
-        <h1 className="font-display mt-4 text-2xl text-bone sm:text-3xl">
+        <h1 className="font-display mt-2 text-2xl text-bone sm:text-3xl">
           This road doesn&apos;t lead anywhere
         </h1>
         <p className="mx-auto mt-3 max-w-md text-muted">

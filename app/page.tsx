@@ -3,7 +3,6 @@ import { ArrowRight, Check, Crown } from "lucide-react";
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
-import BeforeAfter from "@/components/BeforeAfter";
 import Reveal from "@/components/Reveal";
 import Icon from "@/components/Icon";
 import {
@@ -96,49 +95,6 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* BEFORE / AFTER SHOWCASE */}
-      <section className="section bg-ink noise">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              eyebrow="The 935 difference"
-              title={
-                <>
-                  See the correction. <br />
-                  <span className="text-metal">Drag to reveal.</span>
-                </>
-              }
-              subtitle="Swirls, oxidation and desert haze cut away to a deep, mirror-clear finish. Every detail is documented with before & after photos."
-            />
-            <ul className="mt-8 space-y-4">
-              {[
-                "Professional-grade products & technique",
-                "Correction matched to your paint's condition",
-                "Finished with lasting protection",
-              ].map((t, i) => (
-                <Reveal key={t} delay={i * 0.08}>
-                  <li className="flex items-center gap-3 text-silver">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-crimson/15 text-xs font-bold text-crimson">
-                      {i + 1}
-                    </span>
-                    {t}
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-            <Reveal delay={0.3}>
-              <Link href="/gallery" className="btn btn-primary shine mt-9">
-                Explore the gallery
-                <ArrowRight size={16} />
-              </Link>
-            </Reveal>
-          </div>
-          <Reveal delay={0.1}>
-            <BeforeAfter />
-          </Reveal>
         </div>
       </section>
 
