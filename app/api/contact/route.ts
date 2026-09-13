@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { services } from "@/lib/site";
+import { packages, premium } from "@/lib/site";
 
 export const runtime = "nodejs";
 
@@ -14,7 +14,12 @@ type Payload = {
   company?: string; // honeypot
 };
 
-const validSlugs = new Set(services.map((s) => s.slug));
+const validSlugs = new Set([
+  ...packages.map((s) => s.slug),
+  ...premium.map((s) => s.slug),
+  "maintenance-club",
+  "not-sure",
+]);
 
 function isEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);

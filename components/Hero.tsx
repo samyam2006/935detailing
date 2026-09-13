@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Star, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck, Truck, Camera, MapPin } from "lucide-react";
 import CarArt from "./CarArt";
 
 export default function Hero() {
@@ -50,14 +50,8 @@ export default function Hero() {
             transition={{ duration: 0.6, ease }}
             className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-1.5 text-xs font-semibold text-silver"
           >
-            <span className="flex items-center gap-1 text-crimson">
-              <Star size={13} className="fill-crimson" />
-              <Star size={13} className="fill-crimson" />
-              <Star size={13} className="fill-crimson" />
-              <Star size={13} className="fill-crimson" />
-              <Star size={13} className="fill-crimson" />
-            </span>
-            Rated 5.0 by California drivers
+            <MapPin size={13} className="text-crimson" />
+            Lancaster, CA · Antelope Valley · 100% Mobile
           </motion.div>
 
           <motion.h1
@@ -66,12 +60,10 @@ export default function Hero() {
             transition={{ duration: 0.75, delay: 0.08, ease }}
             className="font-display mt-6 text-5xl sm:text-6xl lg:text-7xl"
           >
-            <span className="text-bone">Your car,</span>
+            <span className="text-bone">Your car.</span>
             <br />
-            <span className="text-crimson-metal animate-sheen">
-              flawlessly
-            </span>{" "}
-            <span className="text-metal">detailed.</span>
+            <span className="text-metal">Our</span>{" "}
+            <span className="text-crimson-metal animate-sheen">standard.</span>
           </motion.h1>
 
           <motion.p
@@ -80,9 +72,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.18, ease }}
             className="mt-6 max-w-lg text-lg leading-relaxed text-muted"
           >
-            935 Detailing brings show-floor gloss, multi-year ceramic protection
-            and obsessive attention to every panel — right to you across
-            California.
+            100% mobile detailing built for the Antelope Valley. From everyday
+            maintenance to full restorations, we bring the detail shop right to
+            your driveway — professional-grade, convenient, detail-obsessed.
           </motion.p>
 
           <motion.div
@@ -107,16 +99,16 @@ export default function Hero() {
             className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-silver-2"
           >
             <span className="inline-flex items-center gap-2">
-              <ShieldCheck size={17} className="text-crimson" />
-              Ceramic-certified
+              <Truck size={17} className="text-crimson" />
+              100% Mobile
             </span>
             <span className="inline-flex items-center gap-2">
               <ShieldCheck size={17} className="text-crimson" />
-              Mobile & in-studio
+              24-Hr Satisfaction Guarantee
             </span>
             <span className="inline-flex items-center gap-2">
-              <ShieldCheck size={17} className="text-crimson" />
-              Satisfaction focused
+              <Camera size={17} className="text-crimson" />
+              Before &amp; After Photos
             </span>
           </motion.div>
         </div>

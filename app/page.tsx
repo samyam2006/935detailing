@@ -1,12 +1,19 @@
 import Link from "next/link";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Check, Crown } from "lucide-react";
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import BeforeAfter from "@/components/BeforeAfter";
 import Reveal from "@/components/Reveal";
 import Icon from "@/components/Icon";
-import { services, process, stats, testimonials } from "@/lib/site";
+import {
+  packages,
+  process,
+  stats,
+  differentiators,
+  membership,
+  perks,
+} from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -18,7 +25,7 @@ export default function HomePage() {
         <div className="container-x grid grid-cols-2 gap-y-8 py-12 md:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08} className="text-center">
-              <p className="font-display text-4xl sm:text-5xl text-crimson-metal">
+              <p className="font-display text-3xl sm:text-4xl text-crimson-metal">
                 {s.value}
               </p>
               <p className="mt-2 text-xs uppercase tracking-[0.2em] text-silver-2">
@@ -29,37 +36,71 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES PREVIEW */}
+      {/* PACKAGES PREVIEW */}
       <section className="section bg-ink noise">
         <div className="container-x">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
-              eyebrow="What we do"
+              eyebrow="Detail packages"
               title={
                 <>
-                  Detailing built around <span className="text-crimson-metal">obsession</span>
+                  Built around your{" "}
+                  <span className="text-crimson-metal">standard</span>
                 </>
               }
-              subtitle="From a quick refresh to multi-year ceramic armor, every package is designed to protect your investment and turn heads."
+              subtitle="From keeping it clean between details to a full restoration — honest, upfront pricing for cars, SUVs and trucks."
             />
             <Reveal delay={0.2}>
               <Link href="/services" className="btn btn-ghost whitespace-nowrap">
-                All services
+                All services &amp; pricing
                 <ArrowRight size={16} />
               </Link>
             </Reveal>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.slice(0, 3).map((s, i) => (
+            {packages.map((s, i) => (
               <ServiceCard key={s.slug} service={s} index={i} />
+            ))}
+          </div>
+          <Reveal delay={0.1}>
+            <p className="mt-6 text-center text-sm text-steel">
+              Final pricing depends on vehicle size and condition. Premium paint
+              correction &amp; ceramic coating also available.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* WHY DIFFERENT */}
+      <section className="section bg-ink-2">
+        <div className="container-x">
+          <SectionHeading
+            center
+            eyebrow="Why 935"
+            title="More than a mobile car wash"
+            subtitle="Professional detailing without the dealership price — with the convenience, care and standards that set us apart."
+          />
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {differentiators.map((d, i) => (
+              <Reveal key={d.title} delay={(i % 3) * 0.08}>
+                <div className="group h-full rounded-2xl card-hairline p-7 transition-colors hover:border-crimson/30">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-crimson/12 text-crimson transition-colors group-hover:bg-crimson group-hover:text-white">
+                    <Icon name={d.icon} size={22} />
+                  </div>
+                  <h3 className="mt-5 text-lg font-bold text-bone">{d.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {d.text}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* BEFORE / AFTER SHOWCASE */}
-      <section className="section bg-ink-2">
+      <section className="section bg-ink noise">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading
@@ -70,13 +111,13 @@ export default function HomePage() {
                   <span className="text-metal">Drag to reveal.</span>
                 </>
               }
-              subtitle="Swirls, oxidation and haze cut away to a deep, mirror-clear finish. This is what real paint correction looks like — no filler, no shortcuts."
+              subtitle="Swirls, oxidation and desert haze cut away to a deep, mirror-clear finish. Every detail is documented with before & after photos."
             />
             <ul className="mt-8 space-y-4">
               {[
-                "Multi-stage machine polishing",
-                "Measured paint depth for safe correction",
-                "Finished with lasting ceramic protection",
+                "Professional-grade products & technique",
+                "Correction matched to your paint's condition",
+                "Finished with lasting protection",
               ].map((t, i) => (
                 <Reveal key={t} delay={i * 0.08}>
                   <li className="flex items-center gap-3 text-silver">
@@ -102,13 +143,13 @@ export default function HomePage() {
       </section>
 
       {/* PROCESS */}
-      <section className="section bg-ink noise">
+      <section className="section bg-ink-2">
         <div className="container-x">
           <SectionHeading
             center
-            eyebrow="Our process"
+            eyebrow="How it works"
             title="Four steps to a flawless finish"
-            subtitle="A repeatable, meticulous system that delivers the same show-quality result every single time."
+            subtitle="A simple, mobile process that delivers the same show-quality result every time — right at your driveway."
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((step, i) => {
@@ -135,34 +176,92 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* MEMBERSHIP TEASER */}
+      <section className="section bg-ink noise">
+        <div className="container-x">
+          <div className="relative overflow-hidden rounded-3xl border border-crimson/30 bg-gradient-to-br from-crimson/15 via-ink-3 to-ink p-8 sm:p-12">
+            <div className="absolute inset-0 bg-radial-crimson opacity-60" />
+            <div className="relative grid items-center gap-10 lg:grid-cols-2">
+              <div>
+                <div className="flex items-center gap-3">
+                  <span className="accent-line" />
+                  <p className="eyebrow">Keep it clean</p>
+                </div>
+                <h2 className="font-display mt-4 text-3xl sm:text-4xl text-bone">
+                  {membership.name}
+                </h2>
+                <p className="mt-4 max-w-md text-muted">
+                  {membership.tagline} Recurring mobile maintenance that keeps
+                  your vehicle looking freshly detailed — with priority
+                  scheduling.
+                </p>
+                <div className="mt-6 flex flex-wrap items-end gap-6">
+                  <div>
+                    <p className="font-display text-4xl text-crimson-metal">
+                      {membership.carPrice}
+                      <span className="text-lg text-silver-2">
+                        {membership.period}
+                      </span>
+                    </p>
+                    <p className="text-xs uppercase tracking-widest text-steel">
+                      Cars
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-display text-4xl text-crimson-metal">
+                      {membership.suvPrice}
+                      <span className="text-lg text-silver-2">
+                        {membership.period}
+                      </span>
+                    </p>
+                    <p className="text-xs uppercase tracking-widest text-steel">
+                      SUVs / Trucks
+                    </p>
+                  </div>
+                </div>
+                <Link href="/membership" className="btn btn-primary shine mt-8">
+                  <Crown size={16} />
+                  See membership
+                </Link>
+              </div>
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {membership.includes.map((m) => (
+                  <li
+                    key={m}
+                    className="flex items-center gap-2.5 rounded-lg bg-white/5 px-3 py-2.5 text-sm text-silver"
+                  >
+                    <Check size={15} className="shrink-0 text-crimson" />
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PERKS */}
       <section className="section bg-ink-2">
         <div className="container-x">
           <SectionHeading
             center
-            eyebrow="Reviews"
-            title="Loved by drivers across California"
+            eyebrow="Customer perks"
+            title="More reasons to keep coming back"
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={(i % 2) * 0.1}>
-                <figure className="h-full rounded-2xl card-hairline p-7">
-                  <Quote size={28} className="text-crimson/60" />
-                  <blockquote className="mt-4 text-base leading-relaxed text-silver">
-                    “{t.quote}”
-                  </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-crimson to-crimson-deep text-sm font-bold text-white">
-                      {t.name.charAt(0)}
-                    </span>
-                    <span>
-                      <span className="block text-sm font-semibold text-bone">
-                        {t.name}
-                      </span>
-                      <span className="block text-xs text-steel">{t.car}</span>
-                    </span>
-                  </figcaption>
-                </figure>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {perks.map((p, i) => (
+              <Reveal key={p.title} delay={(i % 4) * 0.08}>
+                <div className="group h-full rounded-2xl card-hairline p-6 text-center transition-colors hover:border-crimson/30">
+                  <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-crimson/12 text-crimson transition-colors group-hover:bg-crimson group-hover:text-white">
+                    <Icon name={p.icon} size={22} />
+                  </div>
+                  <h3 className="mt-4 text-base font-bold text-bone">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {p.text}
+                  </p>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -179,14 +278,14 @@ export default function HomePage() {
         <div className="container-x relative py-24 text-center">
           <Reveal>
             <h2 className="font-display mx-auto max-w-3xl text-4xl sm:text-5xl text-bone">
-              Ready to give your car the{" "}
-              <span className="text-crimson-metal">935 treatment?</span>
+              Ready for the{" "}
+              <span className="text-crimson-metal">935 standard?</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mx-auto mt-5 max-w-xl text-lg text-muted">
               Book online in under a minute. We&apos;ll confirm your slot and
-              bring the shine to you.
+              bring the detail shop to your driveway.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

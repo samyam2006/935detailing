@@ -1,34 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, HelpCircle } from "lucide-react";
+import { ArrowRight, HelpCircle, Check } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import ServiceCard from "@/components/ServiceCard";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
-import { services } from "@/lib/site";
+import Icon from "@/components/Icon";
+import { packages, premium, addOns } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Services & Pricing",
   description:
-    "Explore 935 Detailing packages — express shine, signature details, ceramic coatings, paint correction, interior restoration and paint protection film.",
+    "935 Detailing packages and pricing — 935 Refresh, Signature and Full Restore, plus paint enhancement, paint correction, ceramic coating and add-ons. 100% mobile in the Antelope Valley.",
 };
 
 const faqs = [
   {
-    q: "Do you come to me or do I drop off?",
-    a: "Both. We offer mobile detailing across California for most services, plus an in-studio bay for coatings and correction that need a controlled, dust-free environment.",
+    q: "Are you really 100% mobile?",
+    a: "Yes. We bring the detail shop to you — home, work or driveway anywhere in Lancaster, Palmdale and the Antelope Valley. We'll confirm any water or power access needs when you book.",
   },
   {
-    q: "How long does a ceramic coating last?",
-    a: "Our nano-ceramic coatings are rated up to 5 years with proper maintenance. We'll walk you through simple aftercare to keep it performing.",
+    q: "How is final pricing decided?",
+    a: "Every package lists a starting price for cars and for SUVs/trucks. Final pricing depends on your vehicle's size and condition — heavily soiled vehicles may need add-ons, which we'll always confirm before we start.",
+  },
+  {
+    q: "How long does ceramic coating last?",
+    a: "We offer 1, 3 and 5-year protection tiers. Because coating prep and pricing vary by vehicle, ceramic coating is quote and appointment only — reach out and we'll build the right package.",
   },
   {
     q: "Can you remove scratches and swirls?",
-    a: "In most cases, yes. Paint correction levels the clear coat to remove swirls, light scratches and oxidation. Deep scratches through the clear may only be reduced.",
+    a: "In most cases, yes. Our paint enhancement and multi-stage paint correction level the clear coat to remove swirls, light scratches and oxidation. Deep scratches through the clear may only be reduced.",
   },
   {
-    q: "What payment methods do you accept?",
-    a: "All major cards, Apple Pay, and cash. A deposit secures ceramic and PPF bookings.",
+    q: "What's your satisfaction guarantee?",
+    a: "If you're not satisfied with the finished detail, let us know within 24 hours and we'll make it right. Simple as that.",
   },
 ];
 
@@ -39,60 +44,122 @@ export default function ServicesPage() {
         eyebrow="Services & Pricing"
         title={
           <>
-            Packages for every{" "}
-            <span className="text-crimson-metal">finish</span>
+            Honest pricing, every{" "}
+            <span className="text-crimson-metal">detail</span>
           </>
         }
-        subtitle="Transparent pricing, no upsell games. Pick a package or ask us to build a custom program for your vehicle."
+        subtitle="No upsell games. Pick a package for your car, SUV or truck — or add premium paint care. Fully mobile across the Antelope Valley."
       />
 
+      {/* MAIN PACKAGES */}
       <section className="section bg-ink noise">
         <div className="container-x">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
+          <SectionHeading
+            eyebrow="Main packages"
+            title="Choose your clean"
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {packages.map((s, i) => (
               <ServiceCard key={s.slug} service={s} index={i} />
             ))}
           </div>
-
           <Reveal delay={0.1}>
             <p className="mt-8 text-center text-sm text-steel">
-              Every price is a starting point — final quotes depend on vehicle
-              size and condition. Fleet & dealer rates available.
+              Final pricing depends on vehicle size and condition. Fleet rates
+              available on request.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* ADD-ONS */}
+      {/* PREMIUM SERVICES */}
       <section className="section bg-ink-2">
         <div className="container-x">
           <SectionHeading
-            center
-            eyebrow="Enhance any package"
-            title="Popular add-ons"
+            eyebrow="Premium services"
+            title={
+              <>
+                Serious <span className="text-crimson-metal">paint care</span>
+              </>
+            }
+            subtitle="Where 935 goes beyond a clean car — correction and protection that transform your paint."
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              ["Pet hair removal", "$40+"],
-              ["Engine bay detail", "$60"],
-              ["Headlight restoration", "$80"],
-              ["Ozone odor treatment", "$75"],
-              ["Wheel-off deep clean", "$120"],
-              ["Glass ceramic coating", "$90"],
-            ].map(([name, price], i) => (
-              <Reveal key={name} delay={(i % 3) * 0.08}>
-                <div className="flex items-center justify-between rounded-xl card-hairline px-5 py-4 transition-colors hover:border-crimson/30">
-                  <span className="text-sm font-medium text-silver">{name}</span>
-                  <span className="font-display text-lg text-metal">{price}</span>
-                </div>
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {premium.map((p, i) => (
+              <Reveal key={p.slug} delay={(i % 3) * 0.08}>
+                <article className="flex h-full flex-col rounded-2xl card-hairline p-7 transition-colors hover:border-crimson/30">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/6 text-crimson">
+                    <Icon name={p.icon} size={22} />
+                  </div>
+                  <h3 className="mt-5 text-xl font-bold text-bone">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {p.blurb}
+                  </p>
+                  <p className="mt-4 font-display text-lg text-metal">
+                    {p.price}
+                  </p>
+                  <ul className="mt-5 space-y-2.5">
+                    {p.features.map((f) => (
+                      <li
+                        key={f}
+                        className="flex items-start gap-2.5 text-sm text-silver-2"
+                      >
+                        <Check size={16} className="mt-0.5 shrink-0 text-crimson" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-7">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-crimson transition-colors hover:text-crimson-bright"
+                    >
+                      {p.quoteOnly ? "Request a quote" : "Book this service"}
+                      <ArrowRight size={15} />
+                    </Link>
+                  </div>
+                </article>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* ADD-ONS */}
       <section className="section bg-ink noise">
+        <div className="container-x">
+          <SectionHeading
+            center
+            eyebrow="Enhance any package"
+            title="Add-ons"
+            subtitle="Mix and match with any detail. Prices start low and scale with condition."
+          />
+          <div className="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2">
+            {addOns.map((a, i) => (
+              <Reveal key={a.name} delay={(i % 2) * 0.05}>
+                <div className="flex items-center justify-between rounded-xl card-hairline px-5 py-4 transition-colors hover:border-crimson/30">
+                  <span className="text-sm font-medium text-silver">
+                    {a.name}
+                  </span>
+                  <span className="font-display text-lg text-metal">
+                    {a.price}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.1}>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-steel">
+              Prices are &ldquo;starting at&rdquo; — heavy soiling, pet hair or
+              condition can change the labor required. We&apos;ll always confirm
+              before we begin.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section bg-ink-2">
         <div className="container-x grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeading
             eyebrow="Questions"
@@ -123,7 +190,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-ink-2">
+      <section className="relative overflow-hidden bg-ink noise">
         <div className="absolute inset-0 bg-radial-crimson" />
         <div className="container-x relative py-20 text-center">
           <Reveal>
@@ -133,7 +200,8 @@ export default function ServicesPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mx-auto mt-4 max-w-lg text-muted">
-              Tell us about your car and we&apos;ll recommend the right program.
+              Tell us about your vehicle and we&apos;ll recommend the right
+              detail.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

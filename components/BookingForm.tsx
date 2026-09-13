@@ -3,7 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Loader2, Send, AlertCircle } from "lucide-react";
-import { services } from "@/lib/site";
+import { packages, premium } from "@/lib/site";
+
+const serviceOptions = [
+  ...packages.map((p) => ({ slug: p.slug, label: `${p.title} — from ${p.from}` })),
+  ...premium.map((p) => ({ slug: p.slug, label: `${p.title} — ${p.price}` })),
+  { slug: "maintenance-club", label: "935 Maintenance Club" },
+  { slug: "not-sure", label: "Not sure — recommend for me" },
+];
 
 type State = "idle" | "loading" | "success" | "error";
 
@@ -136,9 +143,9 @@ export default function BookingForm() {
                   <option value="" disabled>
                     Choose a package
                   </option>
-                  {services.map((s) => (
+                  {serviceOptions.map((s) => (
                     <option key={s.slug} value={s.slug}>
-                      {s.title} — {s.price}
+                      {s.label}
                     </option>
                   ))}
                 </select>

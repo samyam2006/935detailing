@@ -9,11 +9,15 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Book & Contact",
   description:
-    "Book a detail with 935 Detailing or get in touch. Serving all of California with mobile and in-studio services.",
+    "Book a mobile detail with 935 Detailing or get in touch. Serving Lancaster, Palmdale and the Antelope Valley.",
 };
 
 const details = [
-  { icon: MapPin, label: "Service area", value: `All of ${site.location}` },
+  {
+    icon: MapPin,
+    label: "Service area",
+    value: `${site.serviceAreas.join(" · ")} — we come to you`,
+  },
   { icon: Clock, label: "Hours", value: site.hours },
   { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
   {
@@ -35,7 +39,7 @@ export default function ContactPage() {
             <span className="text-crimson-metal">gleaming</span>
           </>
         }
-        subtitle="Fill out the form and we'll confirm your appointment. Prefer to talk? Call or message us on any channel below."
+        subtitle="Fill out the form and we'll confirm your mobile appointment. Prefer to talk? Call or message us on any channel below."
       />
 
       <section className="section bg-ink noise">

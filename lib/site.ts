@@ -3,8 +3,11 @@ import type { IconName } from "@/components/Icon";
 export const site = {
   name: "935 Detailing",
   shortName: "935",
-  tagline: "Precision Auto Detailing",
-  location: "California",
+  tagline: "Your Car. Our Standard.",
+  city: "Lancaster, CA",
+  area: "Antelope Valley",
+  serviceAreas: ["Lancaster", "Palmdale", "Antelope Valley"],
+  positioning: "Professional detailing without the dealership price.",
   phone: "(000) 935-0000",
   email: "book@935detailing.com",
   hours: "Mon–Sat · 8am – 6pm",
@@ -17,118 +20,307 @@ export const site = {
   },
 };
 
-export type Service = {
+/* ---------------- Main detail packages ---------------- */
+export type Pkg = {
   slug: string;
   title: string;
   icon: IconName;
   blurb: string;
-  price: string;
-  duration: string;
-  features: string[];
+  from: string;
+  carPrice: string;
+  suvPrice: string;
   featured?: boolean;
+  features: string[];
 };
 
-export const services: Service[] = [
+export const packages: Pkg[] = [
   {
-    slug: "express-shine",
-    title: "Express Shine",
+    slug: "935-refresh",
+    title: "935 Refresh",
     icon: "Wind",
-    blurb:
-      "A fast, thorough refresh that brings back the gloss between deep details.",
-    price: "$89",
-    duration: "1–2 hrs",
+    blurb: "Perfect for keeping your vehicle clean between deep details.",
+    from: "$85",
+    carPrice: "$85",
+    suvPrice: "$105",
     features: [
-      "Foam bath & hand wash",
-      "Wheel & tire cleaning",
-      "Streak-free glass",
-      "Spray sealant shine",
-      "Interior vacuum & wipe-down",
+      "Foam pre-wash & hand wash",
+      "Wheels, tires & tire shine",
+      "Exterior windows & door jambs",
+      "Spray wax protection",
+      "Full interior vacuum",
+      "Dash, console & door panels wiped",
+      "Cupholders & interior windows",
+      "Light deodorizer",
     ],
   },
   {
-    slug: "signature-detail",
-    title: "Signature Detail",
+    slug: "935-signature",
+    title: "935 Signature",
     icon: "Sparkles",
-    blurb:
-      "Our most-booked package — a head-to-toe interior and exterior transformation.",
-    price: "$249",
-    duration: "4–5 hrs",
+    blurb: "Our most popular package — a true top-to-bottom detail.",
+    from: "$150",
+    carPrice: "$150",
+    suvPrice: "$175",
     featured: true,
     features: [
-      "Everything in Express Shine",
-      "Clay-bar decontamination",
-      "Machine-applied paint sealant",
-      "Full interior deep clean & steam",
-      "Leather condition & UV protect",
-      "Engine bay dressing",
+      "Everything in 935 Refresh",
+      "Deep interior vacuum & blowout",
+      "Detailed cracks & crevices",
+      "Steam cleaning of high-touch areas",
+      "Floor mats deep cleaned",
+      "Interior plastics cleaned & protected",
+      "Leather / vinyl cleaned & conditioned",
+      "Exterior decontamination",
+      "Bug & road-film removal",
+      "Premium spray sealant",
+      "Tire & trim dressing",
     ],
   },
   {
-    slug: "ceramic-coating",
-    title: "Ceramic Coating",
-    icon: "ShieldCheck",
-    blurb:
-      "Multi-year nano-ceramic protection with a mirror-deep, hydrophobic finish.",
-    price: "from $799",
-    duration: "1–2 days",
+    slug: "935-full-restore",
+    title: "935 Full Restore",
+    icon: "Crown",
+    blurb: "For vehicles that need a serious transformation.",
+    from: "$225",
+    carPrice: "$225",
+    suvPrice: "$275",
     features: [
-      "Multi-stage paint correction",
-      "9H ceramic coating",
-      "Hydrophobic self-cleaning layer",
-      "Up to 5-year protection",
-      "Glass & wheel coating add-ons",
+      "Everything in 935 Signature",
+      "Deep carpet cleaning",
+      "Seat shampoo & extraction",
+      "Heavy interior scrubbing",
+      "Pet hair removal",
+      "Odor treatment",
+      "Iron / fallout decontamination",
+      "Clay treatment",
+      "Paint sealant",
+      "Trim restoration",
+      "Detailed door jambs",
+      "Trunk / cargo deep clean",
+    ],
+  },
+];
+
+/* ---------------- Premium services ---------------- */
+export type Premium = {
+  slug: string;
+  title: string;
+  icon: IconName;
+  price: string;
+  blurb: string;
+  features: string[];
+  quoteOnly?: boolean;
+};
+
+export const premium: Premium[] = [
+  {
+    slug: "paint-enhancement",
+    title: "Paint Enhancement",
+    icon: "Sparkles",
+    price: "from $250",
+    blurb:
+      "A one-step machine polish that removes light defects and restores deep gloss.",
+    features: [
+      "Paint decontamination",
+      "Clay treatment",
+      "Single-stage machine polish",
+      "Light swirl reduction",
+      "Gloss enhancement",
+      "Paint sealant",
     ],
   },
   {
     slug: "paint-correction",
     title: "Paint Correction",
     icon: "Gem",
+    price: "1-Step $450+ · 2-Step $650+",
     blurb:
-      "Swirls, scratches and oxidation cut and polished away to true clarity.",
-    price: "from $399",
-    duration: "1 day",
+      "Dramatically improve faded, swirled or scratched paint with multi-stage correction.",
     features: [
-      "Paint depth reading",
-      "Compound & polish stages",
+      "Paint depth assessment",
+      "Compounding & polishing stages",
       "Swirl & scratch removal",
-      "Gloss & clarity restoration",
-      "Finishing protective layer",
+      "Oxidation & haze correction",
+      "True clarity & gloss restoration",
+      "Protective finishing layer",
     ],
   },
   {
-    slug: "interior-restore",
-    title: "Interior Restore",
-    icon: "Droplets",
-    blurb:
-      "Deep extraction, steam and conditioning for a factory-fresh cabin.",
-    price: "$189",
-    duration: "3–4 hrs",
-    features: [
-      "Shampoo & hot-water extraction",
-      "Steam sanitation",
-      "Leather & vinyl conditioning",
-      "Odor elimination",
-      "Trim & vent detailing",
-    ],
-  },
-  {
-    slug: "paint-protection-film",
-    title: "Paint Protection Film",
+    slug: "ceramic-coating",
+    title: "Ceramic Coating",
     icon: "ShieldCheck",
+    price: "from $500 · by quote",
+    quoteOnly: true,
     blurb:
-      "Self-healing PPF armor against rock chips, road rash and daily wear.",
-    price: "custom quote",
-    duration: "2–3 days",
+      "Long-term, hydrophobic protection with a mirror-deep finish. 1, 3 and 5-year options.",
     features: [
-      "Precision computer-cut film",
-      "Self-healing top coat",
-      "Full-front or full-body",
-      "Gloss or matte finish",
-      "10-year warranty",
+      "Multi-stage paint prep",
+      "1, 3 or 5-year protection tiers",
+      "Hydrophobic, self-cleaning layer",
+      "UV & oxidation resistance",
+      "Enhanced depth & gloss",
+      "Custom quote & consultation",
     ],
   },
 ];
 
+/* ---------------- Add-ons ---------------- */
+export const addOns: { name: string; price: string }[] = [
+  { name: "Carpet Extraction", price: "$40" },
+  { name: "Seat Shampoo", price: "$50" },
+  { name: "Pet Hair Removal", price: "$35+" },
+  { name: "Heavy Pet Hair", price: "$75+" },
+  { name: "Odor Treatment", price: "$30" },
+  { name: "Headlight Restoration", price: "$75" },
+  { name: "Engine Bay Detail", price: "$60" },
+  { name: "Clay Bar Treatment", price: "$60" },
+  { name: "Spray Wax Upgrade", price: "$25" },
+  { name: "Trim Restoration", price: "$40" },
+  { name: "Leather Conditioning", price: "$30" },
+  { name: "Bug / Tar Removal", price: "$25" },
+  { name: "Excessive Dirt Fee", price: "$25+" },
+];
+
+/* ---------------- What makes 935 different ---------------- */
+export const differentiators: {
+  icon: IconName;
+  title: string;
+  text: string;
+}[] = [
+  {
+    icon: "Truck",
+    title: "100% Mobile",
+    text: "We bring the detail shop to you — home, work or driveway. No wasting your day sitting at a shop.",
+  },
+  {
+    icon: "BadgeCheck",
+    title: "Satisfaction Guarantee",
+    text: "Not happy with the finished detail? Let us know within 24 hours and we'll make it right.",
+  },
+  {
+    icon: "Camera",
+    title: "Before & After Photos",
+    text: "Every vehicle is documented start to finish — your own proof of the transformation.",
+  },
+  {
+    icon: "SprayCan",
+    title: "Premium Products Only",
+    text: "Professional-grade products, proper techniques, no shortcuts. Ever.",
+  },
+  {
+    icon: "Sun",
+    title: "Built for the Desert",
+    text: "Dust, heat, road grime, bugs, hard-water spots and UV — our details are made for Antelope Valley conditions.",
+  },
+];
+
+/* ---------------- Maintenance membership ---------------- */
+export const membership = {
+  name: "935 Maintenance Club",
+  carPrice: "$65",
+  suvPrice: "$80",
+  period: "/mo",
+  tagline: "Get the car clean, then keep it clean.",
+  requirement:
+    "Requires an initial 935 Signature or Full Restore detail to enroll.",
+  includes: [
+    "Exterior hand wash",
+    "Wheels & tires cleaned",
+    "Tire dressing",
+    "Interior vacuum",
+    "Interior wipe-down",
+    "Windows in & out",
+    "Dash & console refresh",
+    "Quick-protection layer",
+    "Priority scheduling",
+  ],
+};
+
+/* ---------------- Customer perks ---------------- */
+export const perks: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: "Users",
+    title: "Referral Program",
+    text: "Refer a friend and get $20 off your next detail — they get $10 off their first.",
+  },
+  {
+    icon: "Cake",
+    title: "Birthday Detail",
+    text: "Enjoy $15 off any detail during your birthday month.",
+  },
+  {
+    icon: "Repeat",
+    title: "Loyalty Rewards",
+    text: "Every 5th detail earns you $30 off or a free premium upgrade.",
+  },
+  {
+    icon: "Calendar",
+    title: "Priority Booking",
+    text: "Maintenance members get first access to weekend and holiday slots.",
+  },
+];
+
+/* ---------------- Brand-value stats ---------------- */
+export const stats = [
+  { value: "100%", label: "Mobile Service" },
+  { value: "24-Hr", label: "Satisfaction Guarantee" },
+  { value: "Before/After", label: "Photos Every Detail" },
+  { value: "AV", label: "Antelope Valley Local" },
+];
+
+/* ---------------- Gallery showcase (themed artwork) ---------------- */
+export const galleryItems: {
+  title: string;
+  service: string;
+  paint: string;
+  paint2: string;
+  accent: string;
+}[] = [
+  {
+    title: "Midnight Coupe",
+    service: "Ceramic Coating",
+    paint: "#0a0a0c",
+    paint2: "#26262c",
+    accent: "#d21f35",
+  },
+  {
+    title: "Crimson GT",
+    service: "Paint Correction",
+    paint: "#7c0f1c",
+    paint2: "#d21f35",
+    accent: "#ffffff",
+  },
+  {
+    title: "Silver Executive",
+    service: "935 Signature",
+    paint: "#8b9096",
+    paint2: "#dfe3e6",
+    accent: "#d21f35",
+  },
+  {
+    title: "Graphite SUV",
+    service: "935 Full Restore",
+    paint: "#1a1c22",
+    paint2: "#3a3d47",
+    accent: "#d21f35",
+  },
+  {
+    title: "Pearl Daily",
+    service: "935 Refresh",
+    paint: "#e9ebee",
+    paint2: "#c3c8cd",
+    accent: "#d21f35",
+  },
+  {
+    title: "Blackout Track",
+    service: "Paint Enhancement",
+    paint: "#0c0c10",
+    paint2: "#1c1c22",
+    accent: "#ff2740",
+  },
+];
+
+/* ---------------- Process ---------------- */
 export type Step = {
   n: string;
   title: string;
@@ -139,124 +331,26 @@ export type Step = {
 export const process: Step[] = [
   {
     n: "01",
-    title: "Book & Consult",
-    text: "Tell us your vehicle and goals. We recommend the right package and lock a time that works for you.",
-    icon: "Car",
+    title: "Book Online",
+    text: "Pick your package and a time. We come to your home, work or driveway anywhere in the Antelope Valley.",
+    icon: "Calendar",
   },
   {
     n: "02",
-    title: "Prep & Decontaminate",
-    text: "Foam bath, hand wash and clay decontamination strip away everything bonded to the paint.",
-    icon: "Droplets",
+    title: "We Come to You",
+    text: "Fully mobile and self-contained. Foam bath, hand wash and decontamination strip away desert grime.",
+    icon: "Truck",
   },
   {
     n: "03",
-    title: "Correct & Protect",
-    text: "Machine polishing removes defects, then coatings lock in a deep, protected gloss.",
+    title: "Detail & Protect",
+    text: "Interior deep clean, correction and protection using professional-grade products — no shortcuts.",
     icon: "Wrench",
   },
   {
     n: "04",
-    title: "Reveal & Protect",
-    text: "A final inspection under detail lighting before we hand back a car that looks reborn.",
-    icon: "Sun",
-  },
-];
-
-export const stats = [
-  { value: "1,200+", label: "Vehicles Detailed" },
-  { value: "5.0", label: "Average Rating" },
-  { value: "9H", label: "Ceramic Hardness" },
-  { value: "100%", label: "Satisfaction Focus" },
-];
-
-export type Testimonial = {
-  name: string;
-  car: string;
-  quote: string;
-};
-
-export const testimonials: Testimonial[] = [
-  {
-    name: "Marcus T.",
-    car: "Porsche 911",
-    quote:
-      "The ceramic coating is unreal — water sheets right off and the depth of the black paint looks wet. Best detail I've had in California, hands down.",
-  },
-  {
-    name: "Priya S.",
-    car: "Tesla Model 3",
-    quote:
-      "They treated my car like it was a show piece. Interior looks and smells brand new. Booking was easy and they were right on time.",
-  },
-  {
-    name: "Diego R.",
-    car: "Chevy Silverado",
-    quote:
-      "Paint correction took years off my truck. The swirls are completely gone. Genuinely impressed by the attention to detail.",
-  },
-  {
-    name: "Hannah L.",
-    car: "BMW M4",
-    quote:
-      "Professional from the first message to the final reveal. The gloss is next level and the PPF gives me total peace of mind.",
-  },
-];
-
-export const galleryItems: {
-  title: string;
-  service: string;
-  body: "coupe" | "suv" | "sedan";
-  paint: string;
-  paint2: string;
-  accent: string;
-}[] = [
-  {
-    title: "Midnight Coupe",
-    service: "Ceramic Coating",
-    body: "coupe",
-    paint: "#0a0a0c",
-    paint2: "#26262c",
-    accent: "#d21f35",
-  },
-  {
-    title: "Crimson GT",
-    service: "Paint Correction",
-    body: "coupe",
-    paint: "#7c0f1c",
-    paint2: "#d21f35",
-    accent: "#ffffff",
-  },
-  {
-    title: "Silver Executive",
-    service: "Signature Detail",
-    body: "sedan",
-    paint: "#8b9096",
-    paint2: "#dfe3e6",
-    accent: "#d21f35",
-  },
-  {
-    title: "Graphite SUV",
-    service: "PPF + Coating",
-    body: "suv",
-    paint: "#1a1c22",
-    paint2: "#3a3d47",
-    accent: "#d21f35",
-  },
-  {
-    title: "Pearl Daily",
-    service: "Interior Restore",
-    body: "sedan",
-    paint: "#e9ebee",
-    paint2: "#c3c8cd",
-    accent: "#d21f35",
-  },
-  {
-    title: "Blackout Track",
-    service: "Full Correction",
-    body: "coupe",
-    paint: "#0c0c10",
-    paint2: "#1c1c22",
-    accent: "#ff2740",
+    title: "Reveal & Photos",
+    text: "A final inspection plus before & after photos handed to you — proof of the 935 standard.",
+    icon: "Camera",
   },
 ];

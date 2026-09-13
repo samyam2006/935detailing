@@ -7,31 +7,31 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL("https://935detailing.com"),
   title: {
-    default: "935 Detailing — Precision Auto Detailing in California",
+    default: "935 Detailing — 100% Mobile Auto Detailing in the Antelope Valley",
     template: "%s · 935 Detailing",
   },
   description:
-    "935 Detailing delivers show-quality car detailing, ceramic coatings, paint correction and paint protection film across California. Book a detail today.",
+    "935 Detailing is a 100% mobile detailing company in Lancaster, CA serving the Antelope Valley. Detail packages, paint correction, ceramic coating and a maintenance club — we come to you.",
   keywords: [
-    "car detailing California",
-    "ceramic coating",
-    "paint correction",
-    "paint protection film",
-    "auto detailing",
+    "mobile detailing Lancaster CA",
+    "Antelope Valley car detailing",
+    "Palmdale mobile detailing",
+    "ceramic coating Lancaster",
+    "paint correction Antelope Valley",
     "935 detailing",
   ],
   openGraph: {
-    title: "935 Detailing — Precision Auto Detailing",
+    title: "935 Detailing — 100% Mobile Auto Detailing",
     description:
-      "Show-quality detailing, ceramic coatings and paint protection across California.",
+      "Mobile detailing built for the Antelope Valley. Your Car. Our Standard.",
     type: "website",
     siteName: site.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "935 Detailing — Precision Auto Detailing",
+    title: "935 Detailing — 100% Mobile Auto Detailing",
     description:
-      "Show-quality detailing, ceramic coatings and paint protection across California.",
+      "Mobile detailing built for the Antelope Valley. Your Car. Our Standard.",
   },
 };
 

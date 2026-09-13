@@ -1,40 +1,50 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Award, HeartHandshake, Sparkles, Timer } from "lucide-react";
+import { ArrowRight, Check, Truck, SprayCan, BadgeCheck, Sun } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CarArt from "@/components/CarArt";
 import Socials from "@/components/Socials";
-import { stats, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "935 Detailing is a California-based detailing studio obsessed with paint, protection and the finer details. Learn about our craft and values.",
+    "935 Detailing is a 100% mobile detailing company built for the Antelope Valley. Professional-grade products, proper techniques, and a 100% satisfaction guarantee.",
 };
 
 const values = [
   {
-    icon: Sparkles,
-    title: "Show-quality standard",
-    text: "We finish every car to the standard we'd want for a concours build — not a car wash checklist.",
+    icon: Truck,
+    title: "100% Mobile",
+    text: "We bring the detail shop to your driveway — convenience that feels premium, not rushed.",
   },
   {
-    icon: HeartHandshake,
-    title: "Treated like our own",
-    text: "Your vehicle is handled with the same care we give our personal cars. No shortcuts, ever.",
+    icon: SprayCan,
+    title: "Premium Products",
+    text: "Professional-grade products and proper techniques. No shortcuts, on every vehicle.",
   },
   {
-    icon: Award,
-    title: "Certified products",
-    text: "We use professional, certified ceramic and PPF systems backed by real warranties.",
+    icon: BadgeCheck,
+    title: "Satisfaction Guarantee",
+    text: "Not happy? Tell us within 24 hours and we'll make it right. Your standard is the standard.",
   },
   {
-    icon: Timer,
-    title: "On time, every time",
-    text: "Clear communication, honest timelines and a booking process that respects your day.",
+    icon: Sun,
+    title: "Built for the Desert",
+    text: "Details engineered for Antelope Valley heat, dust, hard water and UV.",
   },
+];
+
+const promises = [
+  "Professional-grade products",
+  "Attention to every detail",
+  "Convenient mobile service",
+  "Honest, upfront pricing",
+  "Before & after photos",
+  "Customer-first service",
+  "100% satisfaction guarantee",
 ];
 
 export default function AboutPage() {
@@ -44,11 +54,11 @@ export default function AboutPage() {
         eyebrow="Our story"
         title={
           <>
-            Built on a love of{" "}
-            <span className="text-crimson-metal">the details</span>
+            Mobile. Premium.{" "}
+            <span className="text-crimson-metal">935.</span>
           </>
         }
-        subtitle="935 Detailing started with a garage, a polisher and a refusal to accept 'good enough.' Today we bring that same obsession to drivers across California."
+        subtitle="A 100% mobile detailing company built for the Antelope Valley — focused on one thing: making your vehicle look its absolute best."
       />
 
       {/* STORY */}
@@ -57,30 +67,31 @@ export default function AboutPage() {
           <div>
             <SectionHeading
               eyebrow="Who we are"
-              title="A studio, not a car wash"
+              title="We bring the shop to you"
             />
             <div className="mt-6 space-y-5 text-base leading-relaxed text-muted">
               <Reveal>
                 <p>
-                  We&apos;re a California-based detailing studio specializing in
-                  paint correction, ceramic coatings and paint protection film.
-                  What sets us apart isn&apos;t just the products we use — it&apos;s
-                  the patience and precision we bring to every panel.
+                  935 Detailing is a fully mobile detailing service based in{" "}
+                  {site.city}, serving Lancaster, Palmdale and the greater
+                  Antelope Valley. Home, work or driveway — you don&apos;t have
+                  to waste your day sitting at a shop.
                 </p>
               </Reveal>
               <Reveal delay={0.1}>
                 <p>
-                  Every project starts with a real conversation about your goals,
-                  your vehicle and how you use it. From daily drivers to weekend
-                  exotics, we tailor the approach so the results last and the
-                  finish turns heads.
+                  From everyday maintenance to full vehicle restorations, we
+                  treat every car to the same standard: professional-grade
+                  products, proper techniques and obsessive attention to detail.
+                  It&apos;s professional detailing — without the dealership
+                  price.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
                 <p>
-                  Follow the work-in-progress and finished reveals across our
-                  channels — we document the process because we&apos;re proud of
-                  it.
+                  We document every job with before &amp; after photos, and back
+                  our work with a 100% satisfaction guarantee. Follow the
+                  transformations across our channels.
                 </p>
               </Reveal>
             </div>
@@ -100,21 +111,17 @@ export default function AboutPage() {
                   className="w-full"
                 />
               </div>
-              <div className="relative mt-4 grid grid-cols-2 gap-4">
-                {stats.slice(0, 2).map((s) => (
-                  <div
-                    key={s.label}
-                    className="rounded-xl border border-white/10 bg-ink/60 p-4 text-center"
+              <ul className="relative mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                {promises.map((p) => (
+                  <li
+                    key={p}
+                    className="flex items-center gap-2.5 rounded-lg bg-ink/50 px-3 py-2 text-sm text-silver"
                   >
-                    <p className="font-display text-3xl text-crimson-metal">
-                      {s.value}
-                    </p>
-                    <p className="mt-1 text-xs uppercase tracking-widest text-silver-2">
-                      {s.label}
-                    </p>
-                  </div>
+                    <Check size={15} className="shrink-0 text-crimson" />
+                    {p}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </Reveal>
         </div>
@@ -157,13 +164,13 @@ export default function AboutPage() {
         <div className="container-x relative py-20 text-center">
           <Reveal>
             <h2 className="font-display mx-auto max-w-2xl text-3xl sm:text-4xl text-bone">
-              Let&apos;s make your car look its best
+              Built for Lancaster. Made for the desert.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mx-auto mt-4 max-w-lg text-muted">
-              Serving all of {site.location}. Book a detail and see the
-              difference obsession makes.
+              Serving {site.serviceAreas.join(", ")}. Book a detail and see the
+              935 standard for yourself.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

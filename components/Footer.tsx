@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MapPin, Clock, Mail, Phone } from "lucide-react";
 import Logo from "./Logo";
 import Socials from "./Socials";
-import { site, services } from "@/lib/site";
+import { site, packages } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -13,17 +13,19 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Logo size="lg" href={null} />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              Precision auto detailing based in {site.location}. Show-quality
-              results, ceramic coatings and paint protection — treated like our
-              own.
+              100% mobile auto detailing based in {site.city}. Professional-grade
+              results brought right to your driveway.
+            </p>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.28em] text-crimson">
+              Mobile · Premium · 935
             </p>
             <Socials className="mt-6" />
           </div>
 
           <div>
-            <h4 className="eyebrow mb-5">Services</h4>
+            <h4 className="eyebrow mb-5">Packages</h4>
             <ul className="space-y-3 text-sm">
-              {services.slice(0, 5).map((s) => (
+              {packages.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href="/services"
@@ -33,6 +35,14 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/membership"
+                  className="text-silver-2 transition-colors hover:text-white"
+                >
+                  Maintenance Club
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -41,10 +51,10 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {[
                 { href: "/about", label: "About Us" },
+                { href: "/membership", label: "Maintenance Club" },
                 { href: "/gallery", label: "Gallery" },
                 { href: "/services", label: "Pricing" },
                 { href: "/contact", label: "Book a Detail" },
-                { href: "/contact", label: "Contact" },
               ].map((l, i) => (
                 <li key={i}>
                   <Link
@@ -63,7 +73,7 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-silver-2">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-crimson" />
-                <span>Serving all of {site.location}</span>
+                <span>{site.serviceAreas.join(" · ")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock size={18} className="mt-0.5 shrink-0 text-crimson" />
@@ -93,7 +103,7 @@ export default function Footer() {
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
           <p className="text-steel">
-            Crafted with precision in {site.location}.
+            Built for Lancaster. Made for the desert.
           </p>
         </div>
       </div>

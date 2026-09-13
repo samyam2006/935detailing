@@ -1,14 +1,18 @@
 # 935 Detailing
 
-A full-stack, multi-page marketing website for **935 Detailing** — a precision
-auto-detailing company based in California. Built with a dark, cinematic brand
-aesthetic pulled straight from the logo: obsidian black, racing crimson and
-brushed metallic silver.
+A full-stack, multi-page marketing website for **935 Detailing** — a **100%
+mobile** auto-detailing company in **Lancaster, CA** serving the Antelope
+Valley. Brand: _Your Car. Our Standard._ · Mobile · Premium · 935. Built with a
+dark, cinematic aesthetic pulled straight from the logo: obsidian black, racing
+crimson and brushed metallic silver.
 
 ## ✨ Features
 
-- **Multi-page site** — Home, Services & Pricing, Gallery, About, and a
-  Book/Contact page with a working backend.
+- **Multi-page site** — Home, Services & Pricing, Membership, Gallery, About,
+  and a Book/Contact page with a working backend.
+- **Real business content** — the three main packages (935 Refresh, Signature,
+  Full Restore) with car/SUV pricing, premium paint services, an add-on menu,
+  the 935 Maintenance Club, and customer perks.
 - **Full-stack** — a validated `POST /api/contact` booking endpoint (honeypot
   spam protection + in-memory rate limiting) powering the booking form.
 - **Custom artwork, no stock photos** — every vehicle is a hand-built,
@@ -54,7 +58,8 @@ npm run start
 app/
   layout.tsx          # root layout, nav + footer, SEO metadata
   page.tsx            # Home
-  services/page.tsx   # Services & pricing + FAQ
+  services/page.tsx   # Packages, premium services, add-ons + FAQ
+  membership/page.tsx # 935 Maintenance Club + perks
   gallery/page.tsx    # Filterable showcase + before/after
   about/page.tsx      # Story + values
   contact/page.tsx    # Booking form + contact details

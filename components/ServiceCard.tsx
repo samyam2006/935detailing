@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Check, ArrowUpRight } from "lucide-react";
-import type { Service } from "@/lib/site";
+import type { Pkg } from "@/lib/site";
 import Icon from "./Icon";
 
 export default function ServiceCard({
   service,
   index = 0,
 }: {
-  service: Service;
+  service: Pkg;
   index?: number;
 }) {
   return (
@@ -32,22 +32,35 @@ export default function ServiceCard({
         </span>
       )}
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between gap-4">
         <div
-          className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${
+          className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
             service.featured ? "bg-crimson text-white" : "bg-white/6 text-crimson"
           }`}
         >
           <Icon name={service.icon} size={22} />
         </div>
         <div className="text-right">
-          <p className="font-display text-2xl text-metal">{service.price}</p>
-          <p className="text-xs text-steel">{service.duration}</p>
+          <p className="text-[0.65rem] uppercase tracking-widest text-steel">
+            Starting at
+          </p>
+          <p className="font-display text-3xl text-crimson-metal leading-none">
+            {service.from}
+          </p>
         </div>
       </div>
 
       <h3 className="mt-6 text-xl font-bold text-bone">{service.title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted">{service.blurb}</p>
+
+      <div className="mt-4 flex gap-2 text-xs">
+        <span className="rounded-md bg-white/5 px-2.5 py-1 font-semibold text-silver">
+          Cars {service.carPrice}
+        </span>
+        <span className="rounded-md bg-white/5 px-2.5 py-1 font-semibold text-silver">
+          SUV / Truck {service.suvPrice}
+        </span>
+      </div>
 
       <ul className="mt-6 space-y-2.5">
         {service.features.map((f) => (
@@ -58,7 +71,7 @@ export default function ServiceCard({
         ))}
       </ul>
 
-      <div className="mt-7 pt-2">
+      <div className="mt-auto pt-7">
         <Link
           href="/contact"
           className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
