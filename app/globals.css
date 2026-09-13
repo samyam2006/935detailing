@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+/* ============================================================
+   935 DETAILING — Brand Design System
+   Palette pulled from the logo: obsidian black, racing crimson,
+   brushed metallic silver.
+   ============================================================ */
+
+@theme {
+  --color-ink: #050506;
+  --color-ink-2: #0b0b0d;
+  --color-ink-3: #131317;
+  --color-panel: #16161a;
+
+  --color-crimson: #d21f35;
+  --color-crimson-bright: #ff2740;
+  --color-crimson-deep: #8c0f1e;
+  --color-crimson-glow: #ff3b52;
+
+  --color-silver: #d7dade;
+  --color-silver-2: #9aa0a6;
+  --color-steel: #6b7076;
+
+  --color-bone: #f4f5f7;
+  --color-muted: #8b9096;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+
+  --shadow-glow: 0 0 40px -8px rgba(255, 39, 64, 0.55);
+}
+
+:root {
+  color-scheme: dark;
+  --nav-h: 76px;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+}
+
+body {
+  background-color: #050506;
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(210, 31, 53, 0.85);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0d;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d21f35, #8c0f1e);
+  border-radius: 999px;
+  border: 2px solid #0b0b0d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff2740, #d21f35);
+}
+
+/* ---------- Typography helpers ---------- */
+.font-display {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-crimson);
+}
+
+/* ---------- Metallic + crimson text treatments ---------- */
+.text-metal {
+  background: linear-gradient(
+    175deg,
+    #ffffff 0%,
+    #e6e8ea 26%,
+    #9aa0a6 52%,
+    #d7dade 74%,
+    #6b7076 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-crimson-metal {
+  background: linear-gradient(
+    175deg,
+    #ff6274 0%,
+    #ff2740 30%,
+    #d21f35 55%,
+    #8c0f1e 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Backgrounds & textures ---------- */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.bg-carbon {
+  background-color: #0b0b0d;
+  background-image:
+    linear-gradient(27deg, #141418 5px, transparent 5px),
+    linear-gradient(207deg, #141418 5px, transparent 5px),
+    linear-gradient(27deg, #101013 5px, transparent 5px),
+    linear-gradient(207deg, #101013 5px, transparent 5px);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px, 5px 0, 10px 5px;
+}
+
+.bg-radial-crimson {
+  background: radial-gradient(
+    60% 60% at 50% 0%,
+    rgba(210, 31, 53, 0.18) 0%,
+    rgba(210, 31, 53, 0.05) 40%,
+    transparent 72%
+  );
+}
+
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Glass panel */
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.card-hairline {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)) ,
+    #0e0e11;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.65rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+.btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(135deg, #ff2740 0%, #d21f35 50%, #8c0f1e 100%);
+  box-shadow: 0 10px 30px -10px rgba(255, 39, 64, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -12px rgba(255, 39, 64, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-ghost {
+  color: var(--color-bone);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+}
+.btn-ghost:hover {
+  border-color: rgba(255, 39, 64, 0.6);
+  color: #fff;
+  background: rgba(210, 31, 53, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ---------- Shine sweep on hover ---------- */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+.shine:hover::before {
+  left: 130%;
+}
+
+/* ---------- Animated accent line ---------- */
+.accent-line {
+  height: 2px;
+  width: 64px;
+  background: linear-gradient(90deg, var(--color-crimson), transparent);
+  border-radius: 999px;
+}
+
+/* ---------- Keyframe animations ---------- */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 26s linear infinite; }
+
+@keyframes sheen {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.animate-sheen {
+  background-size: 200% auto;
+  animation: sheen 6s linear infinite;
+}
+
+/* Section rhythm */
+.section {
+  position: relative;
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+.container-x {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+/* Reduce motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
