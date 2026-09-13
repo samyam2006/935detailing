@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Particles from "@/components/Particles";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Particles />
         <Navbar />
         <main>{children}</main>
         <Footer />
