@@ -8,7 +8,7 @@ export const site = {
   area: "Antelope Valley",
   serviceAreas: ["Lancaster", "Palmdale", "Antelope Valley"],
   positioning: "Professional detailing without the dealership price.",
-  phone: "(000) 935-0000",
+  phone: "(661) 485-0121",
   email: "book@935detailing.com",
   hours: "Mon–Sat · 8am – 6pm",
   socials: {
